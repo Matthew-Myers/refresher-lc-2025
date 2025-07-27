@@ -7,6 +7,8 @@ Attempted to run this with slices and append, but in Go, when you pass a slice t
 Meaning that you can use append to create a new slice and reassign.
 
 Manually updating the elements here.
+
+The key insight is: Never reassign the slice variable inside the function if you want to modify the original array!
 */
 func rotate(nums []int, k int) {
 	if len(nums) == 0 {
