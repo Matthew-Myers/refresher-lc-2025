@@ -10,7 +10,7 @@ Manually updating the elements here.
 
 The key insight is: Never reassign the slice variable inside the function if you want to modify the original array!
 */
-func rotate(nums []int, k int) {
+func rotateBrute(nums []int, k int) {
 	if len(nums) == 0 {
 		return
 	}
@@ -23,5 +23,30 @@ func rotate(nums []int, k int) {
 			nums[j] = nums[j-1]
 		}
 		nums[0] = last
+	}
+}
+
+func rotateRev(nums []int, k int) {
+	if len(nums) == 0 {
+		return
+	}
+
+	k = k % len(nums)
+
+	// Step 1: Reverse the entire array
+	reverse(nums, 0, len(nums)-1)
+
+	// Step 2: Reverse the first k elements
+	reverse(nums, 0, k-1)
+
+	// Step 3: Reverse the remaining elements
+	reverse(nums, k, len(nums)-1)
+}
+
+func reverse(nums []int, start, end int) {
+	for start < end {
+		nums[start], nums[end] = nums[end], nums[start]
+		start++
+		end--
 	}
 }
